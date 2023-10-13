@@ -20,6 +20,8 @@ class TransferComponent extends Component {
         })
     }
 
+    handleSubmit = ()
+
     render() {
         return (
             <div className="App">
