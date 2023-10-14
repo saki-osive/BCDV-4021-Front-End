@@ -7,11 +7,13 @@ class ReceiptComponent extends Component {
 
         return (
             <div>
-                <h2>Transaction Details</h2>
-                <p><strong>Date:</strong> {transaction.date}</p>
-                <p><strong>Description:</strong> {transaction.description}</p>
-                <p><strong>Amount:</strong> ${transaction.amount.toFixed(2)}</p>
-                <p><strong>Status:</strong> {transaction.status}</p>
+                <h2>Transaction Hash</h2>
+                <p><strong>Transaction Hash:</strong> {transaction.transactionHash}</p>
+                <p><strong>Block Hash:</strong> {transaction.blockHash}</p>
+                <p><strong>Block Number:</strong> {transaction.blockNumber}</p>
+                <p><strong>From:</strong> {transaction.from}</p>
+                <p><strong>To:</strong> {transaction.to}</p>
+                <p><strong>gasUsed:</strong> {transaction.gasUsed}</p>
             </div>
         );
     }
