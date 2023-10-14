@@ -21,7 +21,7 @@ class TransferComponent extends Component {
 
     handleSubmit = (event) => {
         event.preventDefault();
-        if (this.state.amount.trim() === '') return;
+        // if (this.state.amount.trim() === '') return;
 
         this.setState({
             amount: event.target.value
