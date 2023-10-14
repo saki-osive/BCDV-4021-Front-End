@@ -3,15 +3,15 @@ import React, {Component} from "react";
 
 class TransferComponent extends Component {
 
+    sourceAccount = 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266;
+    destinationAccount = 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266;
+
+    xyz
     constructor() {
         super();
         this.state = {
-            sourceAccount: '0xf39Fd6ehj4324hjbn432kjh34bkdhkj432',
-            destinationAccount: '0xf39f6eFd6weqwnmdsadsadj487fdsh8934hrd',
             amount: ''
         }
-
-
     }
 
     handleInputChange = (event) => {
@@ -20,15 +20,22 @@ class TransferComponent extends Component {
         })
     }
 
-    handleSubmit = ()
+    handleSubmit = (event) => {
+        event.preventDefault();
+        if (this.state.amount.trim() === '') return;
+
+        this.setState({
+            amount: event.target.value
+        })
+    }
 
     render() {
         return (
             <div className="App">
                 <h1> Transfer </h1>
 
-                <h5>From: </h5> <p> {this.state.sourceAccount}</p>
-                <h5>To: </h5> <p> {this.state.destinationAccount}</p>
+                <h5>From: </h5> <p> {this.sourceAccount}</p>
+                <h5>To: </h5> <p> {this.destinationAccount}</p>
                 <form>
                     <input
                         type="text"
