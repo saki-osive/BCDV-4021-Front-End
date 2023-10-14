@@ -7,10 +7,9 @@ class ReceiptComponent extends Component {
             <div>
                 <h2>Receipt Component</h2>
                 <p>Transaction Details:</p>
-                <p>Transaction ID: {this.props.transaction.id}</p>
                 <p>Amount: {this.props.transaction.amount}</p>
-                <p>Source Account: {this.props.transaction.sourceAccount}</p>
-                <p>Destination Account: {this.props.transaction.destinationAccount}</p>
+                <p>From: {this.props.transaction.sourceAccount}</p>
+                <p>To: {this.props.transaction.destinationAccount}</p>
             </div>
         );
     }

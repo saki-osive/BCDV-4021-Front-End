@@ -7,11 +7,15 @@ import { faker } from '@faker-js/faker';
 
 class App extends Component{
 
+    sourceAccount = faker.finance.ethereumAddress();
+    destinationAccount = faker.finance.ethereumAddress();
+
     constructor(props) {
         super(props);
 
         this.state = {
             showReceipt: false,
+            amount: ''
         };
     }
 
@@ -19,21 +23,25 @@ class App extends Component{
         this.setState((prevState) => ({ showReceipt: !prevState.showReceipt }));
     }
 
-    render() {
-        const sourceAccount = faker.finance.ethereumAddress();
-        const destinationAccount = faker.finance.ethereumAddress();
+    handleAmountChange = (amount) => {
+        this.setState({ amount });
+    }
 
+    render() {
         return (
             <div>
-                <TransferComponent sourceAccount={sourceAccount} destinationAccount={destinationAccount} />
+                <TransferComponent
+                    sourceAccount={this.sourceAccount}
+                    destinationAccount={this.destinationAccount}
+                    onAmountChange={this.handleAmountChange} // Call Back Function
+                />
                 <button onClick={this.handleReceiptToggle}>Toggle Receipt</button>
                 {this.state.showReceipt && (
                     <ReceiptComponent
                         transaction={{
-                            id: '12345',  // In Progress
-                            amount: '100 ETH', // In Progress
-                            sourceAccount: sourceAccount,
-                            destinationAccount: destinationAccount,
+                            amount: this.state.amount,
+                            sourceAccount: this.sourceAccount,
+                            destinationAccount: this.destinationAccount,
                         }}
                     />
                 )}

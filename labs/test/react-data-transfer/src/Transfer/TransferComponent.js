@@ -10,10 +10,13 @@ class TransferComponent extends Component {
         };
     }
 
+
     handleAmountChange = (event) => {
-        this.setState({
-            amount: event.target.value
-        });
+
+        const amount = event.target.value;
+        this.setState({amount});
+
+        this.props.onAmountChange(amount);
     }
 
     handleSubmit = (event) => {
@@ -28,9 +31,9 @@ class TransferComponent extends Component {
     render() {
         return (
             <div>
-                <h2>Transfer Component</h2>
-                <p>Source Account: {this.props.sourceAccount}</p>
-                <p>Destination Account: {this.props.destinationAccount}</p>
+                <h2>Transfer</h2>
+                <p>From: {this.props.sourceAccount}</p>
+                <p>To: {this.props.destinationAccount}</p>
                 <form onSubmit={this.handleSubmit}>
                     <label>
                         Amount:
