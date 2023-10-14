@@ -1,4 +1,5 @@
 import React, {Component} from "react";
+import {Button, TextField} from "@mui/material";
 
 class TransferComponent extends Component {
     xyz
@@ -21,7 +22,7 @@ class TransferComponent extends Component {
 
     handleSubmit = (event) => {
         event.preventDefault();
-        // if (this.state.amount.trim() === '') return;
+        if (this.state.amount.trim() === '') return;
 
         this.setState({
             amount: event.target.value
@@ -30,16 +31,17 @@ class TransferComponent extends Component {
 
     render() {
         return (
-            <div>
+            <div style={{textAlign: "left"}}>
                 <h2>Transfer</h2>
-                <p>From: {this.props.sourceAccount}</p>
-                <p>To: {this.props.destinationAccount}</p>
+                <p><strong> From:</strong>  {this.props.sourceAccount}</p>
+                <p><strong> To:</strong>  {this.props.destinationAccount}</p>
                 <form onSubmit={this.handleSubmit}>
                     <label>
-                        Amount:
-                        <input type="text" value={this.state.amount} onChange={this.handleAmountChange} />
+                        <strong> Amount: </strong>
+                        <TextField type="text" value={this.state.amount} onChange={this.handleAmountChange} />
                     </label>
-                    <button type="submit">Submit</button>
+                    <br></br>
+                    <Button size="medium" variant="contained" type="submit" onClick={this.handleSubmit}>Submit</Button>
                 </form>
             </div>
         );
