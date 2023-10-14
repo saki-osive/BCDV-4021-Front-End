@@ -1,23 +1,19 @@
-import './App.css';
 import React, {Component} from "react";
 
 class TransferComponent extends Component {
-
-    sourceAccount = 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266;
-    destinationAccount = 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266;
-
     xyz
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
+
         this.state = {
-            amount: ''
-        }
+            amount: '',
+        };
     }
 
-    handleInputChange = (event) => {
+    handleAmountChange = (event) => {
         this.setState({
             amount: event.target.value
-        })
+        });
     }
 
     handleSubmit = (event) => {
@@ -31,19 +27,16 @@ class TransferComponent extends Component {
 
     render() {
         return (
-            <div className="App">
-                <h1> Transfer </h1>
-
-                <h5>From: </h5> <p> {this.sourceAccount}</p>
-                <h5>To: </h5> <p> {this.destinationAccount}</p>
-                <form>
-                    <input
-                        type="text"
-                        placeholder="Amount"
-                        value={this.state.amount}
-                        onChange={this.handleInputChange}
-                    />
-                    <button type="submit" onClick={this.handleSubmit}>Add</button>
+            <div>
+                <h2>Transfer Component</h2>
+                <p>Source Account: {this.props.sourceAccount}</p>
+                <p>Destination Account: {this.props.destinationAccount}</p>
+                <form onSubmit={this.handleSubmit}>
+                    <label>
+                        Amount:
+                        <input type="text" value={this.state.amount} onChange={this.handleAmountChange} />
+                    </label>
+                    <button type="submit">Submit</button>
                 </form>
             </div>
         );
