@@ -11,7 +11,7 @@ function Transfer() {
     const { address } = useParams();
 
     let sourceAccount = address;
-    let destinationAccount = faker.finance.ethereumAddress();
+    const [destinationAccount, setDestinationAccount] = useState(faker.finance.ethereumAddress());
 
     const[showReceipt, setReceipt] = useState(false);
     const[amount, setAmount] = useState('');
